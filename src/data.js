@@ -24,4 +24,9 @@ Data.getOneItem = async(req, res) => {
   res.status(200).json(items[0]);
 }
 
+Data.deleteOneItem = async(req, res) => {
+  const id = req.params.id;
+  const items = await ItemModel.findByIdAndDelete({_id:id});
+  res.status(200).send('Item has been removed');
+}
 module.exports = Data;
